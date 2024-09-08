@@ -1,5 +1,4 @@
 import { TransactionCard } from "@/components/home/TransactionCard";
-import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { FlatList } from "react-native";
 
@@ -17,7 +16,6 @@ export default function HomeScreen() {
 
   return (
     <ThemedView style={{ padding: 16 }}>
-      <ThemedText type="title">Home</ThemedText>
       <FlatList
         data={sampleData}
         keyExtractor={(item, index) => index.toString()}

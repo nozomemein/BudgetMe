@@ -15,7 +15,7 @@ export default function TabLayout() {
         headerShown: true,
         headerRight: () => (
           <TouchableOpacity onPress={() => {}} style={{ marginRight: 15 }}>
-            <Settings color={Colors[colorScheme ?? "light"].tint} size={24} />
+            <Settings color={Colors[colorScheme ?? "light"].icon} size={24} />
           </TouchableOpacity>
         ),
       }}
