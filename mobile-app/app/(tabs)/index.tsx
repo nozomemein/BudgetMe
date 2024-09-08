@@ -1,6 +1,7 @@
 import { TransactionCard } from "@/components/home/TransactionCard";
 import { ThemedView } from "@/components/ThemedView";
 import { FlatList } from "react-native";
+import { FloatingActionButton } from "@/components/home/FloatinActionButton";
 
 export default function HomeScreen() {
   const sampleData = [
@@ -21,6 +22,7 @@ export default function HomeScreen() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => <TransactionCard {...item} />}
       />
+      <FloatingActionButton />
     </ThemedView>
   );
 }
