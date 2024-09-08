@@ -41,6 +41,20 @@ export default function RootLayout() {
             animation: "slide_from_right",
           }}
         />
+        <Stack.Screen
+          name="(modals)/transactions/new"
+          options={{
+            presentation: "modal",
+            headerTitle: "New Transaction",
+          }}
+        />
+        <Stack.Screen
+          name="(modals)/transactions/edit"
+          options={{
+            presentation: "modal",
+            headerTitle: "Edit Transaction",
+          }}
+        />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>

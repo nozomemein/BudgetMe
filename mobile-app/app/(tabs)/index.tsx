@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { TransactionCard } from "@/components/home/TransactionCard";
 import { ThemedView } from "@/components/ThemedView";
 import { FlatList } from "react-native";
@@ -22,7 +23,9 @@ export default function HomeScreen() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => <TransactionCard {...item} />}
       />
-      <FloatingActionButton />
+      <FloatingActionButton
+        onPress={() => router.push("/(modals)/transactions/new")}
+      />
     </ThemedView>
   );
 }

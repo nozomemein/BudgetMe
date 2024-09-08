@@ -3,7 +3,13 @@ import { Plus } from "lucide-react-native";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { Colors } from "@/constants/Colors";
 
-export const FloatingActionButton = () => {
+type FloatingActionButtonProps = {
+  onPress: () => void;
+};
+
+export const FloatingActionButton = ({
+  onPress,
+}: FloatingActionButtonProps) => {
   const colorScheme = useColorScheme();
   return (
     <TouchableOpacity
@@ -11,9 +17,7 @@ export const FloatingActionButton = () => {
         styles.fab,
         { backgroundColor: Colors[colorScheme ?? "light"].icon },
       ]}
-      onPress={() => {
-        /* Add your action here */
-      }}
+      onPress={onPress}
     >
       <Plus size={24} color="white" />
     </TouchableOpacity>
