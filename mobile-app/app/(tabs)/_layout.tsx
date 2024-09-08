@@ -39,13 +39,6 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="wind"
-        options={{
-          title: "Tab Wind",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
     </Tabs>
   );
 }
