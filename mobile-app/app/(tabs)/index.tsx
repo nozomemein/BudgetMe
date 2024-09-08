@@ -1,7 +1,6 @@
 import { TransactionCard } from "@/components/home/TransactionCard";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { FlatList } from "react-native";
 
 export default function HomeScreen() {
@@ -17,15 +16,13 @@ export default function HomeScreen() {
   ];
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ThemedView style={{ padding: 16 }}>
-        <ThemedText type="title">Home</ThemedText>
-        <FlatList
-          data={sampleData}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <TransactionCard {...item} />}
-        />
-      </ThemedView>
-    </SafeAreaView>
+    <ThemedView style={{ padding: 16 }}>
+      <ThemedText type="title">Home</ThemedText>
+      <FlatList
+        data={sampleData}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => <TransactionCard {...item} />}
+      />
+    </ThemedView>
   );
 }

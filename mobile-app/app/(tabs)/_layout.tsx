@@ -1,9 +1,9 @@
 import { Tabs } from "expo-router";
 import React from "react";
-
-import { TabBarIcon } from "@/components/navigation/TabBarIcon";
+import { House, ChartLine, Settings } from "lucide-react-native";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { TouchableOpacity } from "react-native";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -11,32 +11,27 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].icon,
-        headerShown: false,
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        headerShown: true,
+        headerRight: () => (
+          <TouchableOpacity onPress={() => {}} style={{ marginRight: 15 }}>
+            <Settings color={Colors[colorScheme ?? "light"].tint} size={24} />
+          </TouchableOpacity>
+        ),
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: "Overview",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "home" : "home-outline"}
-              color={color}
-            />
-          ),
+          tabBarIcon: (props) => <House {...props} />,
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="analytics"
         options={{
-          title: "Settings",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "settings" : "settings-outline"}
-              color={color}
-            />
-          ),
+          title: "Analytics",
+          tabBarIcon: (props) => <ChartLine {...props} />,
         }}
       />
     </Tabs>
