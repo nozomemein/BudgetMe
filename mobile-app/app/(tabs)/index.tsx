@@ -15,7 +15,7 @@ export default function HomeScreen() {
   ];
 
   return (
-    <ThemedView style={{ padding: 16 }}>
+    <ThemedView style={{ padding: 16, flex: 1 }}>
       <FlatList
         data={sampleData}
         keyExtractor={(item, index) => index.toString()}

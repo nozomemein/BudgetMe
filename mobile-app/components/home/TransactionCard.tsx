@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, useColorScheme } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Colors } from "@/constants/Colors";
 
 type TransactionCardProps = {
   date: string;
@@ -14,24 +15,32 @@ export const TransactionCard = ({
   amount,
 }: TransactionCardProps) => {
   const isNegative = parseFloat(amount) < 0;
+  const colorScheme = useColorScheme();
+  const colors = Colors[colorScheme ?? "light"];
 
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, { backgroundColor: colors.cardBackground }]}>
       <View style={styles.header}>
-        <Text style={styles.date}>{date}</Text>
+        <Text style={[styles.date, { color: colors.icon }]}>{date}</Text>
         <Ionicons
           name={
             isNegative ? "arrow-down-circle-outline" : "arrow-up-circle-outline"
           }
           size={24}
-          color={isNegative ? "red" : "green"}
+          color={isNegative ? colors.destructive : colors.tint}
         />
       </View>
 
-      <Text style={styles.title}>{title}</Text>
+      <Text style={[styles.title, { color: colors.cardForeground }]}>
+        {title}
+      </Text>
 
       <Text
-        style={[styles.amount, isNegative ? styles.negative : styles.positive]}
+        style={[
+          styles.amount,
+          isNegative ? styles.negative : styles.positive,
+          { color: isNegative ? colors.destructive : colors.tint },
+        ]}
       >
         {isNegative
           ? `- ¥${Math.abs(parseFloat(amount)).toFixed(2)}`
@@ -43,7 +52,6 @@ export const TransactionCard = ({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "white",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -53,7 +61,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 16,
     borderWidth: 2,
-    borderColor: "#ccc",
+    borderColor: "transparent",
   },
   header: {
     flexDirection: "row",
@@ -62,13 +70,11 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   date: {
-    color: "gray",
     fontSize: 12,
   },
   title: {
     fontSize: 18,
     fontWeight: "600",
-    color: "#333",
     marginBottom: 8,
   },
   amount: {

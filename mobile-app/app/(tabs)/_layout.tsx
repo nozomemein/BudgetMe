@@ -1,4 +1,4 @@
-import { Tabs } from "expo-router";
+import { Tabs, router } from "expo-router";
 import React from "react";
 import { House, ChartLine, Settings } from "lucide-react-native";
 import { Colors } from "@/constants/Colors";
@@ -11,10 +11,15 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].icon,
         headerShown: true,
         headerRight: () => (
-          <TouchableOpacity onPress={() => {}} style={{ marginRight: 15 }}>
+          <TouchableOpacity
+            onPress={() => {
+              router.push("/settings");
+            }}
+            style={{ marginRight: 15 }}
+          >
             <Settings color={Colors[colorScheme ?? "light"].icon} size={24} />
           </TouchableOpacity>
         ),
