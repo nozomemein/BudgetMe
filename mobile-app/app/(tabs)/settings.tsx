@@ -1,13 +1,10 @@
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Text } from "react-native";
 
 export default function SettingsScreen() {
   return (
     <SafeAreaView>
-      <ThemedView>
-        <ThemedText type="title">Settings</ThemedText>
-      </ThemedView>
+      <Text className="text-black font-bold">settings page</Text>
     </SafeAreaView>
   );
 }
